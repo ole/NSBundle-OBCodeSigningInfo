@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Security/SecCode.h>
-#import <Security/SecRequirement.h>
+#import "NSBundle+SandboxingInfo.h"
 
 
 int main(int argc, const char * argv[])
@@ -46,27 +45,16 @@ int main(int argc, const char * argv[])
                     NSURL *appStoreReceiptURL = [appBundle appStoreReceiptURL];
                     BOOL appStoreReceiptExists = [fileManager fileExistsAtPath:[appStoreReceiptURL path]];
                     if (appStoreReceiptExists) {
-                        NSLog(@"%@ is from the Mac App Store.", appName);
+//                        NSLog(@"%@ is from the Mac App Store.", appName);
                     }
-
-                    BOOL isSandboxed = NO;
-                    SecStaticCodeRef staticCode = NULL;
-                    SecStaticCodeCreateWithPath((__bridge CFURLRef)url, kSecCSDefaultFlags, &staticCode);
-                    if (staticCode != NULL)
-                    {
-                        SecRequirementRef reqRef = NULL;
-                        SecRequirementCreateWithString(CFSTR("entitlement[\"com.apple.security.app-sandbox\"] exists"), kSecCSDefaultFlags, &reqRef);
-                        
-                        if (reqRef != NULL)
-                        {
-                            OSStatus status = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSDefaultFlags, reqRef, NULL);
-//                            NSLog(@"Status: %i", status);
-                            if (status == noErr)
-                            {
-                                isSandboxed = YES;
-                                NSLog(@"%@ is sandboxed", appName);
-                            };
-                        }
+                    
+                    NSDate *start = [NSDate date];
+                    BOOL isSandboxed = [appBundle isSandboxed];
+                    NSTimeInterval elapsedTime = -[start timeIntervalSinceNow];
+                    if (isSandboxed) {
+                        NSLog(@"%@ is sandboxed (%.2f seconds).", appName, elapsedTime);
+                    } else {
+                        NSLog(@"%@ is not sandboxed (%.2f seconds).", appName, elapsedTime);
                     }
                 }
             }
