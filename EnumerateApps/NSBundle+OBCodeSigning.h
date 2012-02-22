@@ -16,7 +16,6 @@ typedef enum {
     OBCodeSignStateSignatureNotVerifiable = 1L << 3,
     OBCodeSignStateSignatureUnsupported = 1L << 4,
     OBCodeSignStateSandboxed = 1L << 5,
-    
     OBCodeSignStateError = 1L << 30
 } OBCodeSignState;
 

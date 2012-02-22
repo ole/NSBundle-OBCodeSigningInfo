@@ -32,33 +32,51 @@
     OSStatus staticCodeResult = SecStaticCodeCreateWithPath((__bridge CFURLRef)bundleURL, kSecCSDefaultFlags, &staticCode);
     if (staticCodeResult == errSecSuccess) 
     {
-        SecRequirementRef requirement = NULL;
-        OSStatus requirementResult = SecRequirementCreateWithString(CFSTR("entitlement[\"com.apple.security.app-sandbox\"] exists"), kSecCSDefaultFlags, &requirement);
-        if (requirementResult == errSecSuccess) 
-        {
-            OSStatus codeCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, requirement, NULL);
-            if (codeCheckResult == errSecSuccess) {
-                resultState |= OBCodeSignStateSandboxed;
-            } else if (codeCheckResult == errSecCSUnsigned) {
+        OSStatus signatureCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, NULL, NULL);
+        switch (signatureCheckResult) {
+            case errSecSuccess:
+                resultState |= OBCodeSignStateSignatureValid;
+                break;
+            case errSecCSUnsigned:
                 resultState |= OBCodeSignStateUnsigned;
-            } else if (codeCheckResult == errSecCSSignatureFailed || codeCheckResult == errSecCSSignatureInvalid) {
+                break;
+            case errSecCSSignatureFailed:
+            case errSecCSSignatureInvalid:
                 resultState |= OBCodeSignStateSignatureInvalid;
-            } else if (codeCheckResult == errSecCSSignatureNotVerifiable) {
+                break;
+            case errSecCSSignatureNotVerifiable:
                 resultState |= OBCodeSignStateSignatureNotVerifiable;
-            } else if (codeCheckResult == errSecCSSignatureUnsupported) {
+                break;
+            case errSecCSSignatureUnsupported:
                 resultState |= OBCodeSignStateSignatureUnsupported;
+                break;
+            default:
+                resultState = OBCodeSignStateError;
+                break;
+        }
+        
+        if ((resultState & OBCodeSignStateSignatureValid) == OBCodeSignStateSignatureValid) 
+        {
+            SecRequirementRef sandboxRequirement = NULL;
+            OSStatus requirementResult = SecRequirementCreateWithString(CFSTR("entitlement[\"com.apple.security.app-sandbox\"] exists"), kSecCSDefaultFlags, &sandboxRequirement);
+            if (requirementResult == errSecSuccess) 
+            {
+                OSStatus codeCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, sandboxRequirement, NULL);
+                if (codeCheckResult == errSecSuccess) {
+                    resultState |= OBCodeSignStateSandboxed;
+                }
+                CFRelease(sandboxRequirement);
             }
-            CFRelease(requirement);
         }
         else
         {
-            resultState |= OBCodeSignStateError;
+            resultState = OBCodeSignStateError;
         }
         CFRelease(staticCode);
     }
     else
     {
-        resultState |= OBCodeSignStateError;
+        resultState = OBCodeSignStateError;
     }
     
     return resultState;
