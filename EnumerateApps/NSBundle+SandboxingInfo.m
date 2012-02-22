@@ -25,7 +25,7 @@
         SecRequirementCreateWithString(CFSTR("entitlement[\"com.apple.security.app-sandbox\"] exists"), kSecCSDefaultFlags, &requirement);
         if (requirement != NULL)
         {
-            OSStatus status = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSDefaultFlags, requirement, NULL);
+            OSStatus status = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, requirement, NULL);
             if (status == errSecSuccess) {
                 isSandboxed = YES;
             };
