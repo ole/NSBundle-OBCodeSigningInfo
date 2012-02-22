@@ -10,6 +10,7 @@
 
 
 typedef enum {
+    OBCodeSignStateInvalidState = 0,
     OBCodeSignStateUnsigned = 1L << 0,
     OBCodeSignStateSignatureValid = 1L << 1,
     OBCodeSignStateSignatureInvalid = 1L << 2,
