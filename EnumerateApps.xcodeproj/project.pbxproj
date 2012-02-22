@@ -1,0 +1,237 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D2D122114F4E6A500761FD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2D122014F4E6A500761FD2 /* Foundation.framework */; };
+		5D2D122414F4E6A500761FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2D122314F4E6A500761FD2 /* main.m */; };
+		5D2D122814F4E6A500761FD2 /* EnumerateApps.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5D2D122714F4E6A500761FD2 /* EnumerateApps.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5D2D121A14F4E6A500761FD2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				5D2D122814F4E6A500761FD2 /* EnumerateApps.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5D2D121C14F4E6A500761FD2 /* EnumerateApps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EnumerateApps; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D2D122014F4E6A500761FD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5D2D122314F4E6A500761FD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5D2D122614F4E6A500761FD2 /* EnumerateApps-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnumerateApps-Prefix.pch"; sourceTree = "<group>"; };
+		5D2D122714F4E6A500761FD2 /* EnumerateApps.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = EnumerateApps.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5D2D121914F4E6A500761FD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D2D122114F4E6A500761FD2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D2D121114F4E6A400761FD2 = {
+			isa = PBXGroup;
+			children = (
+				5D2D122214F4E6A500761FD2 /* EnumerateApps */,
+				5D2D121F14F4E6A500761FD2 /* Frameworks */,
+				5D2D121D14F4E6A500761FD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5D2D121D14F4E6A500761FD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D2D121C14F4E6A500761FD2 /* EnumerateApps */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D2D121F14F4E6A500761FD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D2D122014F4E6A500761FD2 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D2D122214F4E6A500761FD2 /* EnumerateApps */ = {
+			isa = PBXGroup;
+			children = (
+				5D2D122314F4E6A500761FD2 /* main.m */,
+				5D2D122714F4E6A500761FD2 /* EnumerateApps.1 */,
+				5D2D122514F4E6A500761FD2 /* Supporting Files */,
+			);
+			path = EnumerateApps;
+			sourceTree = "<group>";
+		};
+		5D2D122514F4E6A500761FD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D2D122614F4E6A500761FD2 /* EnumerateApps-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5D2D121B14F4E6A500761FD2 /* EnumerateApps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D2D122B14F4E6A500761FD2 /* Build configuration list for PBXNativeTarget "EnumerateApps" */;
+			buildPhases = (
+				5D2D121814F4E6A500761FD2 /* Sources */,
+				5D2D121914F4E6A500761FD2 /* Frameworks */,
+				5D2D121A14F4E6A500761FD2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EnumerateApps;
+			productName = EnumerateApps;
+			productReference = 5D2D121C14F4E6A500761FD2 /* EnumerateApps */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D2D121314F4E6A400761FD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Ole Begemann";
+			};
+			buildConfigurationList = 5D2D121614F4E6A400761FD2 /* Build configuration list for PBXProject "EnumerateApps" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5D2D121114F4E6A400761FD2;
+			productRefGroup = 5D2D121D14F4E6A500761FD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D2D121B14F4E6A500761FD2 /* EnumerateApps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D2D121814F4E6A500761FD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D2D122414F4E6A500761FD2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5D2D122914F4E6A500761FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5D2D122A14F4E6A500761FD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5D2D122C14F4E6A500761FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EnumerateApps/EnumerateApps-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5D2D122D14F4E6A500761FD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EnumerateApps/EnumerateApps-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D2D121614F4E6A400761FD2 /* Build configuration list for PBXProject "EnumerateApps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D2D122914F4E6A500761FD2 /* Debug */,
+				5D2D122A14F4E6A500761FD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D2D122B14F4E6A500761FD2 /* Build configuration list for PBXNativeTarget "EnumerateApps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D2D122C14F4E6A500761FD2 /* Debug */,
+				5D2D122D14F4E6A500761FD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5D2D121314F4E6A400761FD2 /* Project object */;
+}
