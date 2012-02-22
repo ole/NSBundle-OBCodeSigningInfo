@@ -11,7 +11,7 @@
 		5D2D122414F4E6A500761FD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2D122314F4E6A500761FD2 /* main.m */; };
 		5D2D122814F4E6A500761FD2 /* EnumerateApps.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5D2D122714F4E6A500761FD2 /* EnumerateApps.1 */; };
 		5D2D123214F5141E00761FD2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2D123114F5141E00761FD2 /* Security.framework */; };
-		5D2D123514F52E4300761FD2 /* NSBundle+OBCodeSigning.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2D123414F52E4300761FD2 /* NSBundle+OBCodeSigning.m */; };
+		5D2D123514F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2D123414F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,8 +34,8 @@
 		5D2D122614F4E6A500761FD2 /* EnumerateApps-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnumerateApps-Prefix.pch"; sourceTree = "<group>"; };
 		5D2D122714F4E6A500761FD2 /* EnumerateApps.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = EnumerateApps.1; sourceTree = "<group>"; };
 		5D2D123114F5141E00761FD2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		5D2D123314F52E4300761FD2 /* NSBundle+OBCodeSigning.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSBundle+OBCodeSigning.h"; sourceTree = "<group>"; };
-		5D2D123414F52E4300761FD2 /* NSBundle+OBCodeSigning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+OBCodeSigning.m"; sourceTree = "<group>"; };
+		5D2D123314F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSBundle+OBCodeSigningInfo.h"; sourceTree = "<group>"; };
+		5D2D123414F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+OBCodeSigningInfo.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				5D2D122314F4E6A500761FD2 /* main.m */,
-				5D2D123314F52E4300761FD2 /* NSBundle+OBCodeSigning.h */,
-				5D2D123414F52E4300761FD2 /* NSBundle+OBCodeSigning.m */,
+				5D2D123314F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.h */,
+				5D2D123414F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.m */,
 				5D2D122714F4E6A500761FD2 /* EnumerateApps.1 */,
 				5D2D122514F4E6A500761FD2 /* Supporting Files */,
 			);
@@ -149,7 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2D122414F4E6A500761FD2 /* main.m in Sources */,
-				5D2D123514F52E4300761FD2 /* NSBundle+OBCodeSigning.m in Sources */,
+				5D2D123514F52E4300761FD2 /* NSBundle+OBCodeSigningInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

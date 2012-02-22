@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSBundle+OBCodeSigning.h"
+#import "NSBundle+OBCodeSigningInfo.h"
 
 
 int main(int argc, const char * argv[])
@@ -28,28 +28,28 @@ int main(int argc, const char * argv[])
                 if (comesFromAppStore) {
                     NSLog(@"%@ is from the Mac App Store.", appName);
                 }
-                if ((codeSignState & OBCodeSignStateError) == OBCodeSignStateError || codeSignState == OBCodeSignStateInvalidState) 
+                if (appBundle == nil || codeSignState == OBCodeSignStateError) 
                 {
                     NSLog(@"An error occured checking %@'s signature.", appName);
                 }
                 else
                 {
-                    if ((codeSignState & OBCodeSignStateUnsigned) == OBCodeSignStateUnsigned) {
+                    if (codeSignState == OBCodeSignStateUnsigned) {
                         NSLog(@"%@ is not code signed.", appName);
                     }
-                    if ((codeSignState & OBCodeSignStateSignatureValid) == OBCodeSignStateSignatureValid) {
+                    if (codeSignState == OBCodeSignStateSignatureValid) {
                         NSLog(@"%@ has a valid code signature.", appName);
                     }
-                    if ((codeSignState & OBCodeSignStateSignatureInvalid) == OBCodeSignStateSignatureInvalid) {
+                    if (codeSignState == OBCodeSignStateSignatureInvalid) {
                         NSLog(@"%@ has an invalid code signature.", appName);
                     }
-                    if ((codeSignState & OBCodeSignStateSignatureUnsupported) == OBCodeSignStateSignatureUnsupported) {
+                    if (codeSignState == OBCodeSignStateSignatureUnsupported) {
                         NSLog(@"%@ has an unsupported code signature.", appName);
                     }
-                    if ((codeSignState & OBCodeSignStateSignatureNotVerifiable) == OBCodeSignStateSignatureNotVerifiable) {
+                    if (codeSignState == OBCodeSignStateSignatureNotVerifiable) {
                         NSLog(@"%@'s signature could not be verified.", appName);
                     }
-                    if ((codeSignState & OBCodeSignStateSandboxed) == OBCodeSignStateSandboxed) {
+                    if ([appBundle isSandboxed]) {
                         NSLog(@"%@ is sandboxed.", appName);
                     } else {
                         NSLog(@"%@ is not sandboxed.", appName);
@@ -92,7 +92,7 @@ int main(int argc, const char * argv[])
                             NSLog(@"%@ is from the Mac App Store.", appName);
                         }
                         
-                        BOOL isSandboxed = ([appBundle codeSignState] & OBCodeSignStateSandboxed) == OBCodeSignStateSandboxed;
+                        BOOL isSandboxed = [appBundle isSandboxed];
                         if (isSandboxed) {
                             NSLog(@"%@ is sandboxed.", appName);
                         }
