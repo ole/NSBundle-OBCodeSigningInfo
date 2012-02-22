@@ -7,7 +7,6 @@
 //
 
 #import "NSBundle+OBCodeSigningInfo.h"
-#import <Security/SecCode.h>
 #import <Security/SecRequirement.h>
 #import <objc/runtime.h>
 
