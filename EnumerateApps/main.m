@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSBundle+SandboxingInfo.h"
+#import "NSBundle+OBCodeSigning.h"
 
 
 int main(int argc, const char * argv[])
@@ -42,19 +42,14 @@ int main(int argc, const char * argv[])
                 {
                     NSString *appName = [resourceValues objectForKey:NSURLNameKey];
                     NSBundle *appBundle = [[NSBundle alloc] initWithURL:url];
-                    NSURL *appStoreReceiptURL = [appBundle appStoreReceiptURL];
-                    BOOL appStoreReceiptExists = [fileManager fileExistsAtPath:[appStoreReceiptURL path]];
-                    if (appStoreReceiptExists) {
-//                        NSLog(@"%@ is from the Mac App Store.", appName);
+
+                    if ([appBundle comesFromAppStore]) {
+                        NSLog(@"%@ is from the Mac App Store.", appName);
                     }
                     
-                    NSDate *start = [NSDate date];
-                    BOOL isSandboxed = [appBundle isSandboxed];
-                    NSTimeInterval elapsedTime = -[start timeIntervalSinceNow];
+                    BOOL isSandboxed = ([appBundle codeSignState] & OBCodeSignStateSandboxed) == OBCodeSignStateSandboxed;
                     if (isSandboxed) {
-                        NSLog(@"%@ is sandboxed (%.2f seconds).", appName, elapsedTime);
-                    } else {
-                        NSLog(@"%@ is not sandboxed (%.2f seconds).", appName, elapsedTime);
+                        NSLog(@"%@ is sandboxed.", appName);
                     }
                 }
             }
