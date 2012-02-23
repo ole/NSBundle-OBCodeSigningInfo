@@ -23,8 +23,8 @@ int main(int argc, const char * argv[])
                 NSString *appName = [bundlePath lastPathComponent];
                 NSBundle *appBundle = [NSBundle bundleWithPath:bundlePath];
                 
-                BOOL comesFromAppStore = [appBundle comesFromAppStore];
-                OBCodeSignState codeSignState = [appBundle codeSignState];
+                BOOL comesFromAppStore = [appBundle ob_comesFromAppStore];
+                OBCodeSignState codeSignState = [appBundle ob_codeSignState];
                 if (comesFromAppStore) {
                     NSLog(@"%@ is from the Mac App Store.", appName);
                 }
@@ -49,7 +49,7 @@ int main(int argc, const char * argv[])
                     if (codeSignState == OBCodeSignStateSignatureNotVerifiable) {
                         NSLog(@"%@'s signature could not be verified.", appName);
                     }
-                    if ([appBundle isSandboxed]) {
+                    if ([appBundle ob_isSandboxed]) {
                         NSLog(@"%@ is sandboxed.", appName);
                     } else {
                         NSLog(@"%@ is not sandboxed.", appName);
@@ -88,11 +88,11 @@ int main(int argc, const char * argv[])
                         NSString *appName = [resourceValues objectForKey:NSURLNameKey];
                         NSBundle *appBundle = [[NSBundle alloc] initWithURL:url];
                         
-                        if ([appBundle comesFromAppStore]) {
+                        if ([appBundle ob_comesFromAppStore]) {
                             NSLog(@"%@ is from the Mac App Store.", appName);
                         }
                         
-                        BOOL isSandboxed = [appBundle isSandboxed];
+                        BOOL isSandboxed = [appBundle ob_isSandboxed];
                         if (isSandboxed) {
                             NSLog(@"%@ is sandboxed.", appName);
                         }

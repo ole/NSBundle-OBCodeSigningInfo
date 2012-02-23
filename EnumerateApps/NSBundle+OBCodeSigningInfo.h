@@ -1,6 +1,5 @@
 //
 //  NSBundle+OBCodeSigningInfo.h
-//  EnumerateApps
 //
 //  Created by Ole Begemann on 22.02.12.
 //  Copyright (c) 2012 Ole Begemann. All rights reserved.
@@ -21,8 +20,8 @@ typedef enum {
 
 @interface NSBundle (OBCodeSigningInfo)
 
-- (BOOL)comesFromAppStore;
-- (BOOL)isSandboxed;
-- (OBCodeSignState)codeSignState;
+- (BOOL)ob_comesFromAppStore;
+- (BOOL)ob_isSandboxed;
+- (OBCodeSignState)ob_codeSignState;
 
 @end

@@ -1,6 +1,5 @@
 //
 //  NSBundle+OBCodeSigningInfo.m
-//  EnumerateApps
 //
 //  Created by Ole Begemann on 22.02.12.
 //  Copyright (c) 2012 Ole Begemann. All rights reserved.
@@ -12,14 +11,14 @@
 
 
 @interface NSBundle (OBCodeSigningInfoPrivateMethods)
-- (SecStaticCodeRef)createStaticCode;
-- (SecRequirementRef)sandboxRequirement;
+- (SecStaticCodeRef)ob_createStaticCode;
+- (SecRequirementRef)ob_sandboxRequirement;
 @end
 
 
 @implementation NSBundle (OBCodeSigningInfo)
 
-- (BOOL)comesFromAppStore
+- (BOOL)ob_comesFromAppStore
 {
     // Check existence of Mac App Store receipt
     NSURL *appStoreReceiptURL = [self appStoreReceiptURL];
@@ -29,13 +28,13 @@
 }
 
 
-- (BOOL)isSandboxed
+- (BOOL)ob_isSandboxed
 {
     BOOL isSandboxed = NO;
-    if ([self codeSignState] == OBCodeSignStateSignatureValid) 
+    if ([self ob_codeSignState] == OBCodeSignStateSignatureValid) 
     {
-        SecStaticCodeRef staticCode = [self createStaticCode];
-        SecRequirementRef sandboxRequirement = [self sandboxRequirement];
+        SecStaticCodeRef staticCode = [self ob_createStaticCode];
+        SecRequirementRef sandboxRequirement = [self ob_sandboxRequirement];
         if (staticCode && sandboxRequirement) {
             OSStatus codeCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, sandboxRequirement, NULL);
             if (codeCheckResult == errSecSuccess) {
@@ -48,7 +47,7 @@
 }
 
 
-- (OBCodeSignState)codeSignState
+- (OBCodeSignState)ob_codeSignState
 {
     // Return cached value if it exists
     static const void *kOBCodeSignStateKey;
@@ -59,7 +58,7 @@
 
     // Determine code sign status
     OBCodeSignState resultState = OBCodeSignStateError;
-    SecStaticCodeRef staticCode = [self createStaticCode];
+    SecStaticCodeRef staticCode = [self ob_createStaticCode];
     if (staticCode) 
     {
         OSStatus signatureCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, NULL, NULL);
@@ -91,7 +90,7 @@
 
 #pragma mark - Private helper methods
 
-- (SecStaticCodeRef)createStaticCode
+- (SecStaticCodeRef)ob_createStaticCode
 {
     NSURL *bundleURL = [self bundleURL];
     SecStaticCodeRef staticCode = NULL;
@@ -99,7 +98,7 @@
     return staticCode;
 }
 
-- (SecRequirementRef)sandboxRequirement
+- (SecRequirementRef)ob_sandboxRequirement
 {
     static SecRequirementRef sandboxRequirement = NULL;
     static dispatch_once_t onceToken;
